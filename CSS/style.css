@@ -1,0 +1,4526 @@
+/* =========================================================
+   WANDERNEST
+   TRAVEL WEBSITE CSS
+/* =========================================================
+   1. GLOBAL RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f5f1e8;
+    color: #2d241e;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   3. COMMON ANIMATIONS
+   ========================================================= */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeRight {
+    from {
+        opacity: 0;
+        transform: translateX(-35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeLeft {
+    from {
+        opacity: 0;
+        transform: translateX(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(183, 101, 34, 0.25);
+    }
+
+    70% {
+        box-shadow: 0 0 0 14px rgba(183, 101, 34, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(183, 101, 34, 0);
+    }
+}
+
+@keyframes lineGrow {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 60px;
+    }
+}
+
+@keyframes numberPop {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes navDrop {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes navGlow {
+    0%,
+    100% {
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    50% {
+        box-shadow: 0 8px 28px rgba(183, 101, 34, 0.08);
+    }
+}
+
+@keyframes shine {
+    from {
+        transform: translateX(-120%);
+    }
+
+    to {
+        transform: translateX(120%);
+    }
+}
+
+@keyframes heroBackground {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.08);
+    }
+}
+
+
+/* =========================================================
+   4. HEADER / NAVIGATION
+   ========================================================= */
+
+.header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+
+    background: rgba(245, 241, 232, 0.88);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(183, 101, 34, 0.12);
+
+    animation:
+        navDrop 0.8s ease both,
+        navGlow 4s ease-in-out infinite;
+}
+
+.navbar {
+    width: 90%;
+    max-width: 1200px;
+    min-height: 82px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo {
+    position: relative;
+
+    font-size: 1.7rem;
+    font-weight: 800;
+
+    color: #2d241e;
+    text-decoration: none;
+
+    letter-spacing: -0.5px;
+
+    transition:
+        transform 0.3s ease,
+        letter-spacing 0.3s ease;
+}
+
+.logo span {
+    color: #b76522;
+}
+
+.logo::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: #b76522;
+
+    transition: width 0.35s ease;
+}
+
+.logo:hover {
+    transform: translateY(-2px);
+    letter-spacing: 0.2px;
+}
+
+.logo:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   NAV LINKS
+   ========================================================= */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.nav-links a {
+    position: relative;
+
+    color: #3a3028;
+    text-decoration: none;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    padding: 8px 0;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease,
+        text-shadow 0.3s ease;
+}
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: #b76522;
+
+    transform: translateX(-50%);
+
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #b76522;
+    transform: translateY(-2px);
+
+    text-shadow: 0 0 12px rgba(183, 101, 34, 0.18);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   NAV BUTTON
+   ========================================================= */
+
+.nav-button {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding: 11px 20px;
+
+    border-radius: 30px;
+
+    background: #2d241e;
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-weight: 600;
+    font-size: 0.9rem;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.nav-button::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.22),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+}
+
+.nav-button:hover::before {
+    animation: shine 0.7s ease;
+}
+
+.nav-button:hover {
+    background: #b76522;
+    transform: translateY(-3px);
+
+    box-shadow: 0 10px 24px rgba(183, 101, 34, 0.25);
+}
+
+
+/* =========================================================
+   5. COMMON BUTTONS
+   ========================================================= */
+
+.primary-button,
+.secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 13px 24px;
+
+    border-radius: 30px;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.primary-button {
+    background: #b76522;
+    color: #ffffff;
+}
+
+.primary-button:hover {
+    transform: translateY(-4px);
+    background: #984f18;
+
+    box-shadow:
+        0 12px 28px rgba(183, 101, 34, 0.28);
+}
+
+.secondary-button {
+    background: transparent;
+    color: #2d241e;
+
+    border: 1px solid rgba(45, 36, 30, 0.25);
+}
+
+.secondary-button:hover {
+    background: #2d241e;
+    color: #ffffff;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 24px rgba(45, 36, 30, 0.18);
+}
+
+.text-link {
+    color: #b76522;
+    text-decoration: none;
+    font-weight: 700;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.text-link:hover {
+    color: #7e3f13;
+}
+
+
+/* =========================================================
+   6. HOME HERO
+   ========================================================= */
+
+.hero {
+    position: relative;
+
+    min-height: 82vh;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(27, 20, 15, 0.75),
+            rgba(27, 20, 15, 0.35),
+            rgba(27, 20, 15, 0.1)
+        ),
+        url("https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1800&q=85")
+        center / cover no-repeat;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.35)
+        );
+
+    animation: heroBackground 12s ease-in-out infinite alternate;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: 90%;
+    max-width: 1200px;
+
+    margin: auto;
+
+    color: #ffffff;
+
+    animation: fadeRight 1s ease both;
+}
+
+.hero-content h1 {
+    max-width: 700px;
+
+    font-size: clamp(2.8rem, 7vw, 5.8rem);
+
+    line-height: 0.98;
+
+    margin-bottom: 25px;
+
+    letter-spacing: -3px;
+}
+
+.hero-content p {
+    max-width: 620px;
+
+    font-size: 1.12rem;
+
+    margin-bottom: 32px;
+
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* =========================================================
+   7. INTRO SECTION
+   ========================================================= */
+
+.intro {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 100px 0;
+
+    text-align: center;
+
+    animation: fadeUp 1s ease both;
+}
+
+.intro h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+
+    margin-bottom: 18px;
+}
+
+.intro p {
+    max-width: 760px;
+
+    margin: auto;
+
+    color: #655a52;
+
+    font-size: 1.05rem;
+}
+
+
+/* =========================================================
+   8. SECTION HEADING
+   ========================================================= */
+
+.section-heading {
+    text-align: center;
+
+    margin-bottom: 55px;
+}
+
+.section-heading h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+
+    margin-bottom: 12px;
+}
+
+.section-heading p {
+    color: #71665e;
+}
+
+.section-heading::after {
+    content: "";
+
+    display: block;
+
+    width: 60px;
+    height: 3px;
+
+    margin: 18px auto 0;
+
+    background: #b76522;
+
+    border-radius: 10px;
+
+    animation: lineGrow 1s ease both;
+}
+
+
+/* =========================================================
+   9. DESTINATION SECTION
+   ========================================================= */
+
+.destinations-section {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 40px 0 100px;
+}
+
+
+/* =========================================================
+   10. DESTINATION GRID
+   ========================================================= */
+
+.destination-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+
+    justify-content: center;
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   11. PREMIUM DESTINATION CARD
+   ========================================================= */
+
+.destination-card {
+    position: relative;
+
+    flex: 1 1 320px;
+
+    min-height: 450px;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(45, 36, 30, 0.08);
+
+    box-shadow:
+        0 10px 35px rgba(45, 36, 30, 0.08);
+
+    isolation: isolate;
+
+    transform: translateZ(0);
+
+    transition:
+        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.5s ease,
+        border-color 0.5s ease;
+}
+
+
+/* Card hover */
+
+.destination-card:hover {
+    transform: translateY(-14px) scale(1.015);
+
+    border-color: rgba(183, 101, 34, 0.25);
+
+    box-shadow:
+        0 25px 55px rgba(45, 36, 30, 0.17),
+        0 8px 20px rgba(183, 101, 34, 0.08);
+}
+
+
+/* =========================================================
+   12. CARD IMAGE
+   ========================================================= */
+
+.destination-card img {
+    display: block;
+
+    width: 100%;
+    height: 450px;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.5s ease;
+}
+
+.destination-card:hover img {
+    transform: scale(1.12);
+
+    filter:
+        brightness(0.72)
+        saturate(1.08);
+}
+
+
+/* =========================================================
+   13. IMAGE DARK OVERLAY
+   ========================================================= */
+
+.destination-card::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.03) 15%,
+            rgba(0, 0, 0, 0.08) 35%,
+            rgba(0, 0, 0, 0.72) 100%
+        );
+
+    pointer-events: none;
+
+    transition:
+        background 0.5s ease;
+}
+
+.destination-card:hover::before {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.08) 10%,
+            rgba(0, 0, 0, 0.18) 35%,
+            rgba(0, 0, 0, 0.82) 100%
+        );
+}
+
+
+/* =========================================================
+   14. PREMIUM ORANGE GLOW
+   ========================================================= */
+
+.destination-card::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -100px;
+
+    width: 240px;
+    height: 240px;
+
+    transform: translateX(-50%);
+
+    background: rgba(183, 101, 34, 0.22);
+
+    filter: blur(65px);
+
+    opacity: 0;
+
+    z-index: 0;
+
+    transition:
+        opacity 0.6s ease,
+        bottom 0.6s ease;
+}
+
+.destination-card:hover::after {
+    opacity: 1;
+    bottom: -70px;
+}
+
+
+/* =========================================================
+   15. CARD CONTENT
+   ========================================================= */
+
+.destination-card-content {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 3;
+
+    padding: 30px;
+
+    color: #ffffff;
+
+    transform: translateY(12px);
+
+    transition:
+        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.destination-card:hover .destination-card-content {
+    transform: translateY(0);
+}
+
+.destination-card-content h3 {
+    font-size: 1.8rem;
+
+    margin-bottom: 8px;
+
+    letter-spacing: -0.5px;
+
+    text-shadow:
+        0 3px 15px rgba(0, 0, 0, 0.35);
+}
+
+.destination-card-content p {
+    color: rgba(255, 255, 255, 0.88);
+
+    font-size: 0.95rem;
+
+    max-width: 450px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   16. LOCATION TAG
+   ========================================================= */
+
+.location-tag {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 7px 13px;
+
+    margin-bottom: 14px;
+
+    border-radius: 50px;
+
+    background: rgba(255, 255, 255, 0.14);
+
+    border: 1px solid rgba(255, 255, 255, 0.28);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    color: #ffffff;
+
+    font-size: 0.78rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.destination-card:hover .location-tag {
+    background: rgba(183, 101, 34, 0.85);
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   17. CARD LINK
+   ========================================================= */
+
+.destination-card .text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #ffffff;
+
+    font-size: 0.9rem;
+
+    opacity: 0.9;
+
+    transition:
+        gap 0.3s ease,
+        opacity 0.3s ease,
+        color 0.3s ease;
+}
+
+.destination-card .text-link::after {
+    content: "→";
+
+    transition: transform 0.3s ease;
+}
+
+.destination-card:hover .text-link {
+    color: #f3b06f;
+
+    gap: 12px;
+
+    opacity: 1;
+}
+
+.destination-card:hover .text-link::after {
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   18. CARD BADGE
+   ========================================================= */
+
+.destination-card .badge {
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+
+    z-index: 5;
+
+    padding: 8px 14px;
+
+    border-radius: 50px;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    color: #2d241e;
+
+    font-size: 0.75rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.destination-card:hover .badge {
+    background: #b76522;
+    color: #ffffff;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   19. QUOTE SECTION
+   ========================================================= */
+
+.quote-section {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 30px auto 100px;
+
+    padding: 70px 50px;
+
+    text-align: center;
+
+    border-radius: 28px;
+
+    background: #2d241e;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 25px 55px rgba(45, 36, 30, 0.15);
+
+    animation: fadeUp 1s ease both;
+}
+
+.quote-section p {
+    max-width: 760px;
+
+    margin: auto;
+
+    font-size: clamp(1.3rem, 3vw, 2rem);
+
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+.quote-section span {
+    display: block;
+
+    margin-top: 20px;
+
+    color: #dca06c;
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   20. CTA SECTION
+   ========================================================= */
+
+.cta-section {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 0 auto 100px;
+
+    padding: 80px 40px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #efe3d3,
+            #f7f1e9
+        );
+
+    border: 1px solid rgba(183, 101, 34, 0.1);
+
+    animation: fadeUp 1s ease both;
+}
+
+.cta-section h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+
+    margin-bottom: 15px;
+}
+
+.cta-section p {
+    max-width: 650px;
+
+    margin: 0 auto 28px;
+
+    color: #665b52;
+}
+
+
+/* =========================================================
+   21. DESTINATION PAGE HERO
+   ========================================================= */
+
+.page-hero {
+    min-height: 48vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            rgba(35, 27, 21, 0.65),
+            rgba(35, 27, 21, 0.65)
+        ),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=85")
+        center / cover no-repeat;
+
+    animation: zoomIn 1s ease both;
+}
+
+.page-hero h1 {
+    font-size: clamp(2.7rem, 6vw, 5rem);
+
+    line-height: 1;
+
+    margin-bottom: 18px;
+
+    letter-spacing: -2px;
+}
+
+.page-hero p {
+    max-width: 700px;
+
+    margin: auto;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    font-size: 1.05rem;
+}
+
+
+/* =========================================================
+   22. LARGE DESTINATION CARDS
+   ========================================================= */
+
+.destination-large-grid {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 90px 0;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 30px;
+}
+
+.destination-large-card {
+    flex: 1 1 500px;
+
+    overflow: hidden;
+
+    border-radius: 26px;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(45, 36, 30, 0.08);
+
+    box-shadow:
+        0 12px 35px rgba(45, 36, 30, 0.08);
+
+    transition:
+        transform 0.45s ease,
+        box-shadow 0.45s ease;
+}
+
+.destination-large-card:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 25px 55px rgba(45, 36, 30, 0.15);
+}
+
+.destination-large-card img {
+    width: 100%;
+    height: 300px;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform 0.7s ease;
+}
+
+.destination-large-card:hover img {
+    transform: scale(1.08);
+}
+
+.destination-large-card-content {
+    padding: 30px;
+}
+
+.destination-large-card-content h3 {
+    font-size: 1.8rem;
+
+    margin-bottom: 10px;
+}
+
+.destination-large-card-content p {
+    color: #6b6058;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   23. DESTINATION INFORMATION
+   ========================================================= */
+
+.destination-info {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 20px 0 90px;
+}
+
+.destination-info h2 {
+    font-size: 2.4rem;
+
+    margin-bottom: 20px;
+}
+
+.destination-info p {
+    color: #655a52;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   24. GUIDE PAGE
+   ========================================================= */
+
+.guide-section {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 90px 0;
+}
+
+.guide-grid {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 25px;
+}
+
+.guide-card {
+    flex: 1 1 300px;
+
+    padding: 30px;
+
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    border: 1px solid rgba(45, 36, 30, 0.07);
+
+    box-shadow:
+        0 10px 30px rgba(45, 36, 30, 0.07);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.guide-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 20px 45px rgba(45, 36, 30, 0.12);
+}
+
+.guide-card h3 {
+    margin-bottom: 12px;
+
+    font-size: 1.35rem;
+}
+
+.guide-card p {
+    color: #6a5f57;
+}
+
+
+/* =========================================================
+   25. ITINERARY
+   ========================================================= */
+
+.itinerary {
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+
+    margin-top: 30px;
+}
+
+.itinerary-item {
+    display: flex;
+    gap: 20px;
+
+    padding: 22px;
+
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    border-left: 4px solid #b76522;
+
+    box-shadow:
+        0 8px 25px rgba(45, 36, 30, 0.06);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.itinerary-item:hover {
+    transform: translateX(8px);
+
+    box-shadow:
+        0 15px 35px rgba(45, 36, 30, 0.1);
+}
+
+.itinerary-item strong {
+    color: #b76522;
+}
+
+
+/* =========================================================
+   26. BUDGET SECTION
+   ========================================================= */
+
+.budget-grid {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 25px;
+}
+
+.budget-card {
+    flex: 1 1 220px;
+
+    padding: 28px;
+
+    text-align: center;
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(45, 36, 30, 0.06);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.budget-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 20px 40px rgba(45, 36, 30, 0.12);
+}
+
+.budget-card h3 {
+    color: #b76522;
+
+    font-size: 1.8rem;
+
+    margin-bottom: 5px;
+}
+
+
+/* =========================================================
+   27. TRIP FORM
+   ========================================================= */
+
+.trip-form {
+    width: 90%;
+    max-width: 800px;
+
+    margin: 0 auto 100px;
+
+    padding: 40px;
+
+    background: #ffffff;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 15px 45px rgba(45, 36, 30, 0.08);
+}
+
+.trip-form label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-weight: 700;
+}
+
+.trip-form input,
+.trip-form select,
+.trip-form textarea {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid rgba(45, 36, 30, 0.15);
+
+    border-radius: 12px;
+
+    background: #faf8f4;
+
+    font: inherit;
+
+    outline: none;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.trip-form input:focus,
+.trip-form select:focus,
+.trip-form textarea:focus {
+    border-color: #b76522;
+
+    box-shadow:
+        0 0 0 4px rgba(183, 101, 34, 0.1);
+}
+
+.trip-form textarea {
+    min-height: 130px;
+
+    resize: vertical;
+}
+
+
+/* =========================================================
+   28. FOOTER
+   ========================================================= */
+
+.footer {
+    padding: 55px 20px;
+
+    text-align: center;
+
+    background: #2d241e;
+
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer h3 {
+    color: #ffffff;
+
+    margin-bottom: 10px;
+}
+
+.footer p {
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: #dca06c;
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   29. RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        min-height: 75px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .nav-button {
+        padding: 10px 16px;
+    }
+
+    .hero {
+        min-height: 75vh;
+    }
+
+    .destination-grid {
+        gap: 22px;
+    }
+
+    .destination-card {
+        flex: 1 1 300px;
+    }
+
+    .quote-section {
+        padding: 60px 35px;
+    }
+}
+
+
+/* =========================================================
+   30. RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        width: 92%;
+
+        flex-wrap: wrap;
+
+        padding: 15px 0;
+    }
+
+    .logo {
+        font-size: 1.45rem;
+    }
+
+    .nav-links {
+        order: 3;
+
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 20px;
+
+        padding-top: 12px;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+
+    .nav-button {
+        font-size: 0.82rem;
+
+        padding: 9px 14px;
+    }
+
+    .hero {
+        min-height: 72vh;
+    }
+
+    .hero-content {
+        width: 88%;
+    }
+
+    .hero-content h1 {
+        font-size: 3.2rem;
+
+        letter-spacing: -1.5px;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .intro {
+        padding: 70px 0;
+    }
+
+    .destinations-section {
+        padding-bottom: 70px;
+    }
+
+    .destination-grid {
+        flex-direction: column;
+    }
+
+    .destination-card {
+        width: 100%;
+
+        min-height: 430px;
+    }
+
+    .destination-card img {
+        height: 430px;
+    }
+
+    .destination-card-content {
+        padding: 25px;
+    }
+
+    .quote-section {
+        padding: 50px 25px;
+
+        border-radius: 22px;
+    }
+
+    .cta-section {
+        padding: 60px 25px;
+
+        border-radius: 22px;
+    }
+
+    .destination-large-grid {
+        padding: 65px 0;
+    }
+
+    .guide-section {
+        padding: 65px 0;
+    }
+
+    .trip-form {
+        padding: 28px 22px;
+    }
+}
+
+
+/* =========================================================
+   31. RESPONSIVE — SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 450px) {
+
+    .navbar {
+        justify-content: center;
+
+        gap: 10px;
+    }
+
+    .logo {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .nav-links {
+        gap: 13px;
+    }
+
+    .nav-links a {
+        font-size: 0.78rem;
+    }
+
+    .nav-button {
+        display: none;
+    }
+
+    .hero-content h1 {
+        font-size: 2.65rem;
+    }
+
+    .hero-content p {
+        font-size: 0.92rem;
+    }
+
+    .primary-button,
+    .secondary-button {
+        width: 100%;
+
+        padding: 12px 18px;
+    }
+
+    .destination-card {
+        min-height: 400px;
+
+        border-radius: 20px;
+    }
+
+    .destination-card img {
+        height: 400px;
+    }
+
+    .destination-card-content {
+        padding: 22px;
+    }
+
+    .destination-card-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .location-tag {
+        font-size: 0.72rem;
+    }
+
+    .page-hero {
+        min-height: 42vh;
+    }
+
+    .page-hero h1 {
+        font-size: 2.7rem;
+    }
+
+    .quote-section {
+        margin-bottom: 70px;
+    }
+
+    .cta-section {
+        margin-bottom: 70px;
+    }
+}
+
+
+/* =========================================================
+   32. ACCESSIBILITY
+   ========================================================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid rgba(183, 101, 34, 0.45);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   33. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+        scroll-behavior: auto !important;
+    }
+}
+/* =========================================================
+   DESTINATION PAGE — IMAGE FIX
+   ========================================================= */
+
+.large-card-image {
+    position: relative;
+
+    width: 100%;
+    height: 360px;
+
+    overflow: hidden;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    transition:
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.5s ease;
+}
+
+/* =========================================================
+   MEGHALAYA
+   ========================================================= */
+
+.meghalaya-image {
+    background-image:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.35)
+        ),
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1400&q=85");
+}
+
+
+/* =========================================================
+   SIKKIM
+   ========================================================= */
+
+.sikkim-image {
+    background-image:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.35)
+        ),
+        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=85");
+}
+
+
+/* =========================================================
+   RAJASTHAN
+   ========================================================= */
+
+.rajasthan-image {
+    background-image:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.35)
+        ),
+        url("https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1400&q=85");
+}
+
+
+/* =========================================================
+   KASOL
+   ========================================================= */
+
+.kasol-image {
+    background-image: url("https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=85");
+    background-size: cover;
+    background-position: center;
+}
+
+/* =========================================================
+   ZIRO VALLEY
+   ========================================================= */
+
+.ziro-image {
+    background-image:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.35)
+        ),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=85");
+}
+
+
+/* =========================================================
+   IMAGE HOVER EFFECT
+   ========================================================= */
+
+.large-destination-card {
+    overflow: hidden;
+
+    position: relative;
+
+    transition:
+        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.5s ease,
+        border-color 0.5s ease;
+}
+
+.large-destination-card:hover {
+    transform: translateY(-12px);
+
+    box-shadow:
+        0 25px 60px rgba(45, 36, 30, 0.18);
+
+    border-color:
+        rgba(183, 101, 34, 0.25);
+}
+
+
+/* Zoom image on hover */
+
+.large-destination-card:hover .large-card-image {
+    transform: scale(1.08);
+
+    filter:
+        brightness(0.82)
+        saturate(1.08);
+}
+
+
+/* =========================================================
+   IMAGE OVERLAY
+   ========================================================= */
+
+.large-card-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.02) 20%,
+            rgba(0, 0, 0, 0.08) 55%,
+            rgba(0, 0, 0, 0.45) 100%
+        );
+
+    pointer-events: none;
+
+    transition:
+        background 0.5s ease;
+}
+
+.large-destination-card:hover
+.large-card-image::after {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.05) 10%,
+            rgba(0, 0, 0, 0.15) 50%,
+            rgba(0, 0, 0, 0.55) 100%
+        );
+}
+
+
+/* =========================================================
+   LOCATION TAG
+   ========================================================= */
+
+.large-card-image .location-tag {
+    position: absolute;
+
+    top: 22px;
+    left: 22px;
+
+    z-index: 5;
+
+    padding: 9px 16px;
+
+    border-radius: 50px;
+
+    background: rgba(255, 255, 255, 0.88);
+
+    color: #2d241e;
+
+    font-size: 0.78rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.12);
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.large-destination-card:hover
+.large-card-image .location-tag {
+    background: #b76522;
+
+    color: #ffffff;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   RESPONSIVE IMAGE HEIGHT
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .large-card-image {
+        height: 300px;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .large-card-image {
+        height: 260px;
+    }
+}
+/* =========================================================
+   HOME PAGE — PREMIUM HERO ENHANCEMENTS
+   ========================================================= */
+
+
+/* =========================================================
+   HERO CONTAINER
+   ========================================================= */
+
+.hero {
+    position: relative;
+
+    min-height: 88vh;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(20, 15, 11, 0.82) 0%,
+            rgba(20, 15, 11, 0.58) 42%,
+            rgba(20, 15, 11, 0.18) 100%
+        ),
+        url("https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=2000&q=90")
+        center / cover no-repeat;
+}
+
+
+/* =========================================================
+   CINEMATIC BACKGROUND ZOOM
+   ========================================================= */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -4%;
+
+    z-index: -2;
+
+    background:
+        url("https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=2000&q=90")
+        center / cover no-repeat;
+
+    animation:
+        heroCinematicZoom 18s ease-in-out infinite alternate;
+
+    transform-origin: center;
+}
+
+@keyframes heroCinematicZoom {
+
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.09);
+    }
+}
+
+
+/* =========================================================
+   CINEMATIC DARK GRADIENT
+   ========================================================= */
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.08) 0%,
+            transparent 35%,
+            rgba(0, 0, 0, 0.42) 100%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.hero-content {
+    position: relative;
+
+    z-index: 5;
+
+    width: 90%;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 80px 0;
+
+    color: #ffffff;
+
+    animation:
+        heroContentReveal 1.2s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        both;
+}
+
+@keyframes heroContentReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(45px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   HERO SMALL LABEL
+   ========================================================= */
+
+.hero-content .small-title {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 22px;
+
+    padding: 8px 15px;
+
+    border-radius: 50px;
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.22);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    color:
+        rgba(255, 255, 255, 0.92);
+
+    font-size: 0.75rem;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.12);
+
+    animation:
+        fadeUp 1s 0.15s ease both;
+}
+
+
+/* Small glowing dot */
+
+.hero-content .small-title::before {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #dca06c;
+
+    box-shadow:
+        0 0 12px
+        rgba(220, 160, 108, 0.9);
+
+    animation:
+        heroDotPulse 2s ease-in-out infinite;
+}
+
+@keyframes heroDotPulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform: scale(1.2);
+    }
+}
+
+
+/* =========================================================
+   HERO HEADING
+   ========================================================= */
+
+.hero-content h1 {
+    max-width: 850px;
+
+    margin-bottom: 28px;
+
+    font-size:
+        clamp(
+            3.3rem,
+            7vw,
+            6.5rem
+        );
+
+    line-height:
+        0.94;
+
+    letter-spacing:
+        -4px;
+
+    font-weight:
+        800;
+
+    text-wrap:
+        balance;
+
+    text-shadow:
+        0 8px 35px
+        rgba(0, 0, 0, 0.25);
+
+    animation:
+        heroHeadingReveal
+        1.1s
+        0.2s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        both;
+}
+
+@keyframes heroHeadingReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   HERO HIGHLIGHT
+   ========================================================= */
+
+.hero-content h1 span {
+    position: relative;
+
+    display: inline-block;
+
+    color: #e5a066;
+
+    text-shadow:
+        0 5px 25px
+        rgba(183, 101, 34, 0.35);
+}
+
+
+/* Decorative underline */
+
+.hero-content h1 span::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 100%;
+    height: 4px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #b76522,
+            #e5a066,
+            transparent
+        );
+
+    transform-origin: left;
+
+    animation:
+        heroUnderline 1.2s
+        0.9s
+        ease
+        both;
+}
+
+@keyframes heroUnderline {
+
+    from {
+        transform: scaleX(0);
+
+        opacity: 0;
+    }
+
+    to {
+        transform: scaleX(1);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+   ========================================================= */
+
+.hero-content > p:not(.small-title) {
+    max-width: 650px;
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255, 255, 255, 0.88);
+
+    font-size:
+        clamp(
+            0.98rem,
+            1.5vw,
+            1.15rem
+        );
+
+    line-height:
+        1.75;
+
+    text-shadow:
+        0 3px 15px
+        rgba(0, 0, 0, 0.35);
+
+    animation:
+        fadeUp 1s 0.55s ease both;
+}
+
+
+/* =========================================================
+   HERO BUTTON GROUP
+   ========================================================= */
+
+.hero-content .primary-button,
+.hero-content .secondary-button {
+    position: relative;
+
+    overflow: hidden;
+
+    min-width: 165px;
+
+    padding:
+        14px 24px;
+
+    margin-right: 10px;
+
+    animation:
+        fadeUp 1s 0.7s ease both;
+}
+
+
+/* =========================================================
+   PRIMARY HERO BUTTON
+   ========================================================= */
+
+.hero-content .primary-button {
+    background:
+        linear-gradient(
+            135deg,
+            #c8752f,
+            #a75318
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 12px 30px
+        rgba(0, 0, 0, 0.20);
+}
+
+.hero-content .primary-button:hover {
+    transform:
+        translateY(-5px)
+        scale(1.02);
+
+    background:
+        linear-gradient(
+            135deg,
+            #d8843d,
+            #b76522
+        );
+
+    box-shadow:
+        0 18px 38px
+        rgba(183, 101, 34, 0.35);
+}
+
+
+/* Shine animation */
+
+.hero-content .primary-button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.28),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+}
+
+.hero-content .primary-button:hover::before {
+    animation:
+        shine 0.8s ease;
+}
+
+
+/* =========================================================
+   SECONDARY HERO BUTTON
+   ========================================================= */
+
+.hero-content .secondary-button {
+    color: #ffffff;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.35);
+
+    backdrop-filter:
+        blur(10px);
+
+    -webkit-backdrop-filter:
+        blur(10px);
+}
+
+.hero-content .secondary-button:hover {
+    color: #2d241e;
+
+    background: #ffffff;
+
+    border-color: #ffffff;
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   FLOATING DECORATIVE LIGHT
+   ========================================================= */
+
+.hero .hero-content::after {
+    content: "";
+
+    position: absolute;
+
+    right: 5%;
+    top: 15%;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(229, 160, 102, 0.22),
+            transparent 68%
+        );
+
+    filter:
+        blur(5px);
+
+    pointer-events: none;
+
+    animation:
+        heroFloatLight 6s
+        ease-in-out
+        infinite;
+}
+
+@keyframes heroFloatLight {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translateY(-20px)
+            scale(1.08);
+    }
+}
+
+
+/* =========================================================
+   HERO BOTTOM FADE
+   ========================================================= */
+
+.hero-content::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -120px;
+
+    width: 100%;
+    height: 120px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(245, 241, 232, 0.12)
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .hero {
+        min-height: 82vh;
+
+        background-position:
+            60% center;
+    }
+
+    .hero-content {
+        padding: 70px 0;
+    }
+
+    .hero-content h1 {
+        max-width: 720px;
+
+        font-size:
+            clamp(
+                3rem,
+                8vw,
+                5.2rem
+            );
+
+        letter-spacing:
+            -2.5px;
+    }
+
+    .hero .hero-content::after {
+        right: -5%;
+
+        width: 140px;
+        height: 140px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .hero {
+        min-height: 78vh;
+
+        background-position:
+            62% center;
+    }
+
+    .hero-content {
+        width: 88%;
+
+        padding:
+            70px 0;
+    }
+
+    .hero-content .small-title {
+        font-size: 0.68rem;
+
+        letter-spacing:
+            1.5px;
+
+        padding:
+            7px 12px;
+    }
+
+    .hero-content h1 {
+        font-size:
+            clamp(
+                2.8rem,
+                12vw,
+                4.2rem
+            );
+
+        line-height:
+            0.98;
+
+        letter-spacing:
+            -2px;
+
+        margin-bottom:
+            25px;
+    }
+
+    .hero-content h1 span::after {
+        height: 3px;
+
+        bottom: -5px;
+    }
+
+    .hero-content > p:not(.small-title) {
+        max-width: 540px;
+
+        font-size:
+            0.96rem;
+
+        line-height:
+            1.65;
+
+        margin-bottom:
+            28px;
+    }
+
+    .hero-content .primary-button,
+    .hero-content .secondary-button {
+        min-width: 145px;
+
+        padding:
+            12px 18px;
+
+        margin-bottom:
+            8px;
+    }
+
+    .hero .hero-content::after {
+        right: -40px;
+        top: 8%;
+
+        width: 120px;
+        height: 120px;
+
+        opacity: 0.65;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 450px) {
+
+    .hero {
+        min-height: 76vh;
+
+        background-position:
+            65% center;
+    }
+
+    .hero-content {
+        width: 90%;
+
+        padding:
+            60px 0;
+    }
+
+    .hero-content h1 {
+        font-size:
+            2.65rem;
+
+        letter-spacing:
+            -1.5px;
+    }
+
+    .hero-content > p:not(.small-title) {
+        font-size:
+            0.9rem;
+    }
+
+    .hero-content .primary-button,
+    .hero-content .secondary-button {
+        width: 100%;
+
+        margin-right: 0;
+    }
+
+    .hero .hero-content::after {
+        display: none;
+    }
+}
+/* =========================================================
+   TRAVEL GUIDE PAGE — PREMIUM ENHANCEMENTS
+   ========================================================= */
+
+
+/* =========================================================
+   GUIDE SECTION
+   ========================================================= */
+
+.guide-section {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 95px 0;
+}
+
+
+/* =========================================================
+   GUIDE CARDS
+   ========================================================= */
+
+.guide-grid {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 28px;
+
+    align-items: stretch;
+}
+
+
+/* Premium glass-style card */
+
+.guide-card {
+    position: relative;
+
+    flex: 1 1 300px;
+
+    overflow: hidden;
+
+    padding: 34px 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.98),
+            rgba(250, 246, 239, 0.95)
+        );
+
+    border:
+        1px solid rgba(45, 36, 30, 0.08);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 12px 35px rgba(45, 36, 30, 0.07);
+
+    transition:
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.45s ease,
+        border-color 0.45s ease;
+}
+
+
+/* Decorative glow */
+
+.guide-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: -80px;
+    right: -80px;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(183, 101, 34, 0.08);
+
+    filter: blur(30px);
+
+    transition:
+        transform 0.5s ease,
+        opacity 0.5s ease;
+}
+
+.guide-card:hover::before {
+    transform: scale(1.5);
+
+    opacity: 0.9;
+}
+
+
+/* Hover */
+
+.guide-card:hover {
+    transform:
+        translateY(-12px);
+
+    border-color:
+        rgba(183, 101, 34, 0.20);
+
+    box-shadow:
+        0 25px 55px rgba(45, 36, 30, 0.13),
+        0 8px 20px rgba(183, 101, 34, 0.06);
+}
+
+
+/* =========================================================
+   GUIDE CARD HEADING
+   ========================================================= */
+
+.guide-card h3 {
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 12px;
+
+    font-size: 1.4rem;
+
+    letter-spacing:
+        -0.4px;
+}
+
+.guide-card p {
+    position: relative;
+
+    z-index: 2;
+
+    color: #6a5f57;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   GUIDE CARD ICON
+   ========================================================= */
+
+.guide-card .icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+
+    margin-bottom: 22px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(183, 101, 34, 0.10);
+
+    color:
+        #b76522;
+
+    font-size: 1.6rem;
+
+    transition:
+        transform 0.4s ease,
+        background 0.4s ease;
+}
+
+.guide-card:hover .icon {
+    transform:
+        translateY(-5px)
+        rotate(-3deg);
+
+    background:
+        rgba(183, 101, 34, 0.16);
+}
+
+
+/* =========================================================
+   PACKING SECTION
+   ========================================================= */
+
+.packing-grid {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 22px;
+}
+
+.packing-card {
+    position: relative;
+
+    flex: 1 1 220px;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    background: #ffffff;
+
+    border:
+        1px solid rgba(45, 36, 30, 0.07);
+
+    box-shadow:
+        0 8px 25px rgba(45, 36, 30, 0.06);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.packing-card:hover {
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 18px 40px rgba(45, 36, 30, 0.11);
+}
+
+.packing-card h3 {
+    margin-bottom: 8px;
+
+    font-size: 1.15rem;
+}
+
+.packing-card p {
+    color: #6a5f57;
+
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   ITINERARY TIMELINE
+   ========================================================= */
+
+.itinerary {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+
+    margin-top: 40px;
+
+    padding-left: 35px;
+}
+
+
+/* Vertical line */
+
+.itinerary::before {
+    content: "";
+
+    position: absolute;
+
+    left: 8px;
+    top: 5px;
+    bottom: 5px;
+
+    width: 2px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #b76522,
+            rgba(183, 101, 34, 0.12)
+        );
+}
+
+
+/* Timeline item */
+
+.itinerary-item {
+    position: relative;
+
+    display: flex;
+
+    gap: 22px;
+
+    padding: 25px 28px;
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    border:
+        1px solid rgba(45, 36, 30, 0.07);
+
+    box-shadow:
+        0 8px 28px rgba(45, 36, 30, 0.06);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+
+/* Timeline dot */
+
+.itinerary-item::before {
+    content: "";
+
+    position: absolute;
+
+    left: -35px;
+    top: 29px;
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: #b76522;
+
+    border:
+        4px solid #f5f1e8;
+
+    box-shadow:
+        0 0 0 3px rgba(183, 101, 34, 0.12);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.itinerary-item:hover::before {
+    transform: scale(1.25);
+
+    box-shadow:
+        0 0 0 6px rgba(183, 101, 34, 0.10);
+}
+
+
+/* Timeline hover */
+
+.itinerary-item:hover {
+    transform:
+        translateX(8px);
+
+    border-color:
+        rgba(183, 101, 34, 0.18);
+
+    box-shadow:
+        0 18px 40px rgba(45, 36, 30, 0.10);
+}
+
+.itinerary-item strong {
+    min-width: 75px;
+
+    color: #b76522;
+
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   BUDGET SECTION
+   ========================================================= */
+
+.budget-grid {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 25px;
+}
+
+.budget-card {
+    position: relative;
+
+    flex: 1 1 220px;
+
+    overflow: hidden;
+
+    padding: 32px 25px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #faf6ef
+        );
+
+    border-radius: 22px;
+
+    border:
+        1px solid rgba(45, 36, 30, 0.07);
+
+    box-shadow:
+        0 10px 30px rgba(45, 36, 30, 0.06);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.budget-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #b76522,
+            #e0a16b
+        );
+
+    transform:
+        scaleX(0);
+
+    transform-origin:
+        left;
+
+    transition:
+        transform 0.4s ease;
+}
+
+.budget-card:hover::before {
+    transform:
+        scaleX(1);
+}
+
+.budget-card:hover {
+    transform:
+        translateY(-10px);
+
+    box-shadow:
+        0 22px 45px rgba(45, 36, 30, 0.11);
+}
+
+
+/* Price */
+
+.budget-card h3 {
+    color: #b76522;
+
+    font-size:
+        clamp(
+            1.7rem,
+            3vw,
+            2.2rem
+        );
+
+    margin-bottom: 7px;
+
+    animation:
+        numberPop 0.8s ease both;
+}
+
+.budget-card p {
+    color: #6b6058;
+
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   TRIP PLANNER FORM
+   ========================================================= */
+
+.trip-form {
+    position: relative;
+
+    width: 90%;
+    max-width: 900px;
+
+    margin:
+        0 auto 100px;
+
+    padding: 48px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #faf6ef
+        );
+
+    border-radius: 28px;
+
+    border:
+        1px solid rgba(45, 36, 30, 0.08);
+
+    box-shadow:
+        0 20px 55px rgba(45, 36, 30, 0.09);
+
+    overflow: hidden;
+}
+
+
+/* Form decorative glow */
+
+.trip-form::before {
+    content: "";
+
+    position: absolute;
+
+    top: -130px;
+    right: -130px;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(183, 101, 34, 0.08);
+
+    filter: blur(45px);
+
+    pointer-events: none;
+}
+
+.trip-form::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: -150px;
+    left: -150px;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(45, 36, 30, 0.035);
+
+    filter: blur(45px);
+
+    pointer-events: none;
+}
+
+
+/* Form content */
+
+.trip-form > * {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   FORM LABELS
+   ========================================================= */
+
+.trip-form label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #352b25;
+
+    font-size: 0.9rem;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   FORM INPUTS
+   ========================================================= */
+
+.trip-form input,
+.trip-form select,
+.trip-form textarea {
+    width: 100%;
+
+    padding:
+        14px 16px;
+
+    margin-bottom: 22px;
+
+    border:
+        1px solid rgba(45, 36, 30, 0.13);
+
+    border-radius: 13px;
+
+    background:
+        rgba(250, 248, 244, 0.9);
+
+    color: #2d241e;
+
+    font:
+        inherit;
+
+    outline: none;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.trip-form input:hover,
+.trip-form select:hover,
+.trip-form textarea:hover {
+    background: #ffffff;
+
+    border-color:
+        rgba(183, 101, 34, 0.25);
+}
+
+.trip-form input:focus,
+.trip-form select:focus,
+.trip-form textarea:focus {
+    background: #ffffff;
+
+    border-color:
+        #b76522;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(183, 101, 34, 0.10);
+
+    transform:
+        translateY(-1px);
+}
+
+.trip-form textarea {
+    min-height: 140px;
+
+    resize: vertical;
+}
+
+
+/* =========================================================
+   FORM BUTTON
+   ========================================================= */
+
+.trip-form button,
+.trip-form .primary-button {
+    position: relative;
+
+    overflow: hidden;
+
+    border: none;
+
+    cursor: pointer;
+
+    padding:
+        14px 28px;
+
+    border-radius:
+        30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #c8752f,
+            #a75318
+        );
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 12px 28px
+        rgba(183, 101, 34, 0.20);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.trip-form button:hover,
+.trip-form .primary-button:hover {
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 18px 38px
+        rgba(183, 101, 34, 0.30);
+}
+
+
+/* =========================================================
+   GUIDE PAGE SECTION HEADINGS
+   ========================================================= */
+
+.guide-section .section-heading {
+    margin-bottom: 55px;
+}
+
+.guide-section .section-heading h2 {
+    color: #2d241e;
+}
+
+.guide-section .section-heading p {
+    color: #71665e;
+}
+
+
+/* =========================================================
+   GUIDE PAGE CTA
+   ========================================================= */
+
+.guide-cta {
+    position: relative;
+
+    width: 90%;
+    max-width: 1100px;
+
+    margin:
+        0 auto 100px;
+
+    padding:
+        75px 40px;
+
+    text-align: center;
+
+    border-radius:
+        30px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2d241e,
+            #40342c
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 25px 55px
+        rgba(45, 36, 30, 0.16);
+}
+
+.guide-cta::before {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    top: -120px;
+    right: -80px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(183, 101, 34, 0.20);
+
+    filter: blur(40px);
+}
+
+.guide-cta h2 {
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 15px;
+
+    font-size:
+        clamp(
+            2rem,
+            4vw,
+            3.2rem
+        );
+}
+
+.guide-cta p {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 650px;
+
+    margin:
+        0 auto 28px;
+
+    color:
+        rgba(255, 255, 255, 0.78);
+}
+
+
+/* =========================================================
+   MOBILE — GUIDE PAGE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .guide-section {
+        padding:
+            70px 0;
+    }
+
+    .guide-grid {
+        flex-direction:
+            column;
+    }
+
+    .guide-card {
+        width: 100%;
+
+        padding:
+            28px 24px;
+    }
+
+    .packing-grid {
+        flex-direction:
+            column;
+    }
+
+    .packing-card {
+        width: 100%;
+    }
+
+    .itinerary {
+        padding-left:
+            28px;
+    }
+
+    .itinerary-item {
+        flex-direction:
+            column;
+
+        gap: 8px;
+
+        padding:
+            22px;
+    }
+
+    .itinerary-item::before {
+        left:
+            -28px;
+    }
+
+    .itinerary-item strong {
+        min-width:
+            auto;
+    }
+
+    .budget-grid {
+        flex-direction:
+            column;
+    }
+
+    .budget-card {
+        width: 100%;
+    }
+
+    .trip-form {
+        width: 92%;
+
+        padding:
+            32px 24px;
+
+        border-radius:
+            22px;
+    }
+
+    .guide-cta {
+        width: 92%;
+
+        padding:
+            60px 25px;
+
+        border-radius:
+            24px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 450px) {
+
+    .guide-section {
+        padding:
+            55px 0;
+    }
+
+    .guide-card {
+        padding:
+            24px 20px;
+
+        border-radius:
+            20px;
+    }
+
+    .guide-card .icon {
+        width: 52px;
+        height: 52px;
+
+        font-size:
+            1.4rem;
+    }
+
+    .itinerary {
+        padding-left:
+            24px;
+    }
+
+    .itinerary-item {
+        padding:
+            20px;
+    }
+
+    .itinerary-item::before {
+        left:
+            -24px;
+
+        width: 12px;
+        height: 12px;
+    }
+
+    .trip-form {
+        padding:
+            28px 20px;
+    }
+
+    .trip-form input,
+    .trip-form select,
+    .trip-form textarea {
+        padding:
+            12px 13px;
+    }
+
+    .trip-form button,
+    .trip-form .primary-button {
+        width: 100%;
+    }
+
+    .guide-cta {
+        margin-bottom:
+            70px;
+    }
+}
+/* =========================================================
+   FINAL PREMIUM POLISH
+   WANDERNEST
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL SMOOTH EXPERIENCE
+   ========================================================= */
+
+/* =========================================================
+   PAGE LOAD ANIMATION
+   ========================================================= */
+
+body {
+    animation:
+        pageFadeIn 0.7s ease both;
+}
+
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   PREMIUM TEXT SELECTION
+   ========================================================= */
+
+::selection {
+    background:
+        rgba(183, 101, 34, 0.20);
+
+    color:
+        #2d241e;
+}
+
+
+/* =========================================================
+   PREMIUM SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background:
+        #f5f1e8;
+}
+
+::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(
+            180deg,
+            #c8752f,
+            #9d4f19
+        );
+
+    border-radius:
+        20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background:
+        #8e4515;
+}
+
+
+/* =========================================================
+   NAVIGATION — FINAL POLISH
+   ========================================================= */
+
+.navbar {
+    transition:
+        background 0.35s ease,
+        box-shadow 0.35s ease,
+        transform 0.35s ease;
+}
+
+.navbar:hover {
+    box-shadow:
+        0 12px 35px
+        rgba(45, 36, 30, 0.10);
+}
+
+.nav-links a {
+    position: relative;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.nav-links a:hover {
+    transform:
+        translateY(-2px);
+}
+
+
+/* Active-looking underline */
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    border-radius:
+        10px;
+
+    background:
+        #b76522;
+
+    transform:
+        translateX(-50%);
+
+    transition:
+        width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width:
+        70%;
+}
+
+
+/* =========================================================
+   LOGO FINAL POLISH
+   ========================================================= */
+
+.logo {
+    transition:
+        transform 0.3s ease;
+}
+
+.logo:hover {
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   ALL BUTTONS
+   ========================================================= */
+
+button,
+.nav-button,
+.primary-button,
+.secondary-button,
+.cta-button {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+button:hover,
+.nav-button:hover,
+.primary-button:hover,
+.secondary-button:hover,
+.cta-button:hover {
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================================
+   BUTTON PRESS EFFECT
+   ========================================================= */
+
+button:active,
+.nav-button:active,
+.primary-button:active,
+.secondary-button:active,
+.cta-button:active {
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   SECTION HEADING POLISH
+   ========================================================= */
+
+.section-heading {
+    position: relative;
+}
+
+.section-heading h2 {
+    letter-spacing:
+        -0.7px;
+}
+
+.section-heading p {
+    max-width:
+        680px;
+
+    margin-left:
+        auto;
+
+    margin-right:
+        auto;
+}
+
+
+/* =========================================================
+   DESTINATION CARDS — FINAL POLISH
+   ========================================================= */
+
+.large-destination-card {
+    transition:
+        transform 0.45s
+        cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.45s ease,
+        border-color 0.45s ease;
+}
+
+.large-destination-card:hover {
+    transform:
+        translateY(-12px);
+
+    box-shadow:
+        0 25px 55px
+        rgba(45, 36, 30, 0.13);
+}
+
+
+/* Image transition */
+
+.large-card-image {
+    transition:
+        transform 0.6s
+        cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.6s ease;
+}
+
+.large-destination-card:hover
+.large-card-image {
+    filter:
+        saturate(1.08)
+        contrast(1.03);
+}
+
+
+/* =========================================================
+   LOCATION TAG
+   ========================================================= */
+
+.location-tag {
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+.large-destination-card:hover
+.location-tag {
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(255, 255, 255, 0.96);
+}
+
+
+/* =========================================================
+   DESTINATION NUMBER
+   ========================================================= */
+
+.number {
+    transition:
+        transform 0.35s ease,
+        color 0.35s ease;
+}
+
+.large-destination-card:hover .number {
+    transform:
+        translateX(5px);
+
+    color:
+        #b76522;
+}
+
+
+/* =========================================================
+   DESTINATION CTA
+   ========================================================= */
+
+.destination-cta {
+    transition:
+        transform 0.3s ease;
+}
+
+.destination-cta:hover {
+    transform:
+        translateX(5px);
+}
+
+
+/* =========================================================
+   GENERAL CARD POLISH
+   ========================================================= */
+
+.card,
+.info-card,
+.feature-card {
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.card:hover,
+.info-card:hover,
+.feature-card:hover {
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 20px 45px
+        rgba(45, 36, 30, 0.10);
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+    transition:
+        color 0.3s ease,
+        opacity 0.3s ease;
+}
+
+
+/* =========================================================
+   FOOTER — PREMIUM DESIGN
+   ========================================================= */
+
+.footer {
+    position: relative;
+
+    margin-top:
+        80px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2d241e,
+            #3d3028
+        );
+
+    color:
+        #ffffff;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.05);
+}
+
+
+/* Footer glow */
+
+.footer::before {
+    content: "";
+
+    position: absolute;
+
+    width: 320px;
+    height: 320px;
+
+    top: -180px;
+    right: -100px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(183, 101, 34, 0.15);
+
+    filter:
+        blur(55px);
+
+    pointer-events:
+        none;
+}
+
+.footer::after {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    bottom: -180px;
+    left: -80px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    filter:
+        blur(45px);
+
+    pointer-events:
+        none;
+}
+
+
+/* Footer content */
+
+.footer-container {
+    position: relative;
+
+    z-index: 2;
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        50px;
+
+    max-width:
+        1200px;
+
+    margin:
+        auto;
+
+    padding:
+        75px 5% 45px;
+}
+
+
+/* Footer brand */
+
+.footer-brand {
+    flex:
+        1 1 280px;
+}
+
+.footer-brand h2,
+.footer-brand h3 {
+    margin-bottom:
+        15px;
+
+    color:
+        #ffffff;
+}
+
+.footer-brand p {
+    max-width:
+        380px;
+
+    color:
+        rgba(255, 255, 255, 0.68);
+
+    line-height:
+        1.7;
+}
+
+
+/* Footer links */
+
+.footer-links {
+    display:
+        flex;
+
+    flex:
+        1 1 400px;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        60px;
+}
+
+.footer-links h3 {
+    margin-bottom:
+        16px;
+
+    color:
+        #ffffff;
+
+    font-size:
+        1rem;
+}
+
+.footer-links a {
+    display:
+        block;
+
+    margin-bottom:
+        10px;
+
+    color:
+        rgba(255, 255, 255, 0.65);
+
+    text-decoration:
+        none;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.footer-links a:hover {
+    color:
+        #ffffff;
+
+    transform:
+        translateX(5px);
+}
+
+
+/* =========================================================
+   FOOTER COPYRIGHT
+   ========================================================= */
+
+.footer-copy {
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    max-width:
+        1200px;
+
+    margin:
+        auto;
+
+    padding:
+        22px 5%;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.09);
+
+    color:
+        rgba(255, 255, 255, 0.52);
+
+    font-size:
+        0.85rem;
+
+    text-align:
+        center;
+}
+
+
+/* =========================================================
+   CTA BOX FINAL POLISH
+   ========================================================= */
+
+.cta-box {
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.cta-box:hover {
+    transform:
+        translateY(-7px);
+
+    box-shadow:
+        0 25px 55px
+        rgba(45, 36, 30, 0.15);
+}
+
+
+/* CTA light sweep */
+
+.cta-box::after {
+    content: "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        -120%;
+
+    width:
+        70%;
+
+    height:
+        100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.08),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    transition:
+        left 0.8s ease;
+
+    pointer-events:
+        none;
+}
+
+.cta-box:hover::after {
+    left:
+        150%;
+}
+
+
+/* =========================================================
+   INPUT ACCESSIBILITY
+   ========================================================= */
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+    outline:
+        none;
+}
+
+
+/* =========================================================
+   IMAGE QUALITY
+   ========================================================= */
+
+img {
+    max-width:
+        100%;
+
+    height:
+        auto;
+
+    display:
+        block;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .footer-container {
+        gap:
+            35px;
+
+        padding:
+            60px 6% 40px;
+    }
+
+    .footer-links {
+        gap:
+            40px;
+    }
+
+    .large-destination-card:hover {
+        transform:
+            translateY(-7px);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    /* Navigation */
+
+    .navbar {
+        padding:
+            15px 5%;
+    }
+
+
+    /* Sections */
+
+    .section {
+        padding:
+            65px 5%;
+    }
+
+
+    /* Headings */
+
+    .section-heading h2 {
+        font-size:
+            2rem;
+    }
+
+    .section-heading p {
+        font-size:
+            0.95rem;
+    }
+
+
+    /* Cards */
+
+    .large-destination-card:hover,
+    .card:hover,
+    .info-card:hover,
+    .feature-card:hover {
+        transform:
+            translateY(-5px);
+    }
+
+
+    /* Footer */
+
+    .footer-container {
+        flex-direction:
+            column;
+
+        padding:
+            55px 7% 35px;
+
+        gap:
+            35px;
+    }
+
+    .footer-brand,
+    .footer-links {
+        width:
+            100%;
+    }
+
+    .footer-links {
+        gap:
+            30px;
+    }
+
+    .footer-copy {
+        padding:
+            20px 7%;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 450px) {
+
+    .section-heading h2 {
+        font-size:
+            1.75rem;
+    }
+
+    .section-heading p {
+        font-size:
+            0.9rem;
+    }
+
+    .footer-links {
+        flex-direction:
+            column;
+
+        gap:
+            20px;
+    }
+
+    .footer-links a {
+        margin-bottom:
+            8px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior:
+            auto !important;
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+}
+/* =========================================================
+   SPITI VALLEY — FINAL IMAGE FIX
+   ========================================================= */
+
+.large-card-image.spiti-image {
+    background-image: url("https://media1.thrillophilia.com/filestore/51lanip6r04gojdw2q8nip0z0f5y_Spiti10.jpg?w=1440&dpr=2") !important;
+
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Dark cinematic overlay */
+
+.large-card-image.spiti-image::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.18)
+        );
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* Keep Himachal Pradesh badge above overlay */
+
+.large-card-image.spiti-image .location-tag {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* Beautiful hover effect */
+
+.large-destination-card:hover
+.large-card-image.spiti-image {
+    transform: scale(1.02);
+
+    filter:
+        saturate(1.08)
+        contrast(1.04);
+}
